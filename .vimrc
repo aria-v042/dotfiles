@@ -19,7 +19,7 @@ set smartindent			" automatically indent lines based on file syntax
 
 set shiftwidth=4		" each step of indentation as set number of spaces
 set tabstop=4			" tab as set number of spaces (C language standard)
-set expandtab			" insert spaces instead of actual Tab characters
+#set expandtab			" insert spaces instead of actual Tab characters
 set softtabstop=4		" tab behavior consistent with set number of spaces
 set smarttab			" tab at line start uses shiftwidth, tabstop elsewhere
 
