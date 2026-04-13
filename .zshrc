@@ -219,7 +219,12 @@ alias examshell='git clone https://github.com/Seraph919/Grademe-edu && cd Gradem
 # ---------------------------------------------
 
 
-# fzf
+# fzf - clone repo if needed
+if ! command -v fzf &>/dev/null; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git $ZSH/fzf
+	$ZSH/fzf/install --bin  # install to $ZSH/fzf/bin
+	path+=($ZSH/fzf/bin)
+fi
 source <(fzf --zsh)         # source fzf configuration for zsh
 
 ## zsh autosuggestions - clone repo if needed
