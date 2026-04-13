@@ -204,7 +204,7 @@ alias tsepoch='date +%s'            # seconds since Unix epoch
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 
 # dotfiles.git
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 
 # c compiler / gcc
 alias ccw='cc -Wall -Werror -Wextra'
