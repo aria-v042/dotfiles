@@ -209,13 +209,14 @@ alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 # c compiler / gcc
 alias ccw='cc -Wall -Werror -Wextra'
 
+
 # /><>/ 42 /><>/
 alias mini='~/mini-moulinette/mini-moul.sh'
 alias examshell='git clone https://github.com/Seraph919/Grademe-edu && cd Grademe-edu && make && make'
 
 
 # ---------------------------------------------
-# TOOL SOURCING
+# TOOLS
 # ---------------------------------------------
 
 
@@ -248,3 +249,6 @@ fi
 if command -v fastfetch &>/dev/null; then
     fastfetch
 fi
+
+# local override
+[ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
