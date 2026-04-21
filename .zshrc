@@ -244,17 +244,11 @@ fi
 # END
 # ---------------------------------------------
 
-<<<<<<< HEAD
-if command -v fastfetch &>/dev/null; then
-    fastfetch
-fi
-
-# local override
-[ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
-=======
 #if command -v fastfetch &>/dev/null; then
 #    fastfetch
 #fi
 
 echo "Welcome to zsh, aria"
->>>>>>> 4376483bb2cbdb6dbc81aefd055edf4fceecfe1d
+
+# local override
+[ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
