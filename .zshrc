@@ -180,12 +180,10 @@ alias lsize='ls -lAh -S'                    # sort by size, smallest first
 if type -p eza &>/dev/null; then
     # if eza is installed
     alias eza='eza --group-directories-first'
-    alias ea='eza -A'                       # all files
-    alias el='eza -AlgH --git'              # long list
-    alias et='eza --tree'                   # tree view
-    alias etl='el --tree --git-ignore'      # long list with tree view
-    alias tree='et'
-    alias ltree='etl'
+    alias ea='eza -A'								# all files
+    alias el='eza -AlgH --git'						# long list
+    alias tree='eza --tree'							# tree view
+    alias ltree='el --tree --git --git-ignore'      # tree view long list 
 fi
 
 # find files recursively and sort by last modified; ignore hidden files
@@ -245,6 +243,8 @@ fi
 # END
 # ---------------------------------------------
 
-if command -v fastfetch &>/dev/null; then
-    fastfetch
-fi
+#if command -v fastfetch &>/dev/null; then
+#    fastfetch
+#fi
+
+echo "Welcome to zsh, aria"
