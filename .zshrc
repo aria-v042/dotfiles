@@ -248,7 +248,8 @@ fi
 #    fastfetch
 #fi
 
-echo "Welcome to zsh, aria"
+echo "Welcome back, $(whoami)"
+echo ":: did you git pull today?"
 
 # local override
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
