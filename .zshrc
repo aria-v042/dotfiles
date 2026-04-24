@@ -12,6 +12,8 @@ setopt autocd				# if command is not a normal command and is a directory cd into
 # ENVIRONMENT VARIABLES
 # ---------------------------------------------
 
+# home config directory
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # vim workflow
 export VISUAL=vim
