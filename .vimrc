@@ -17,11 +17,10 @@ set scrolloff=5         " keep set lines visible above or below cursor
 set autoindent          " automatically indent new lines
 set smartindent			" automatically indent lines based on file syntax
 
-set shiftwidth=4		" each step of indentation as set number of spaces
 set tabstop=4			" tab as set number of spaces (C language standard)
-"set expandtab			" insert spaces instead of actual Tab characters
 set softtabstop=4		" tab behavior consistent with set number of spaces
-set smarttab			" tab at line start uses shiftwidth, tabstop elsewhere
+set shiftwidth=4		" each step of indentation as set number of spaces
+set noexpandtab			" insert spaces instead of actual Tab characters
 
 set ruler				" enable ruler (display cursor line and column)
 set showmode			" show current mode in status line
@@ -65,9 +64,11 @@ match RedundantWhitespace /\s\+$\| \+\ze\t/
 " KEY REMAPPINGS
 " ---------------------------------------------
 
-" exit insert mode with 'jj'
+" exit Insert mode with 'jj'
 inoremap jj <ESC>
 
+" clear search highlights when pressing <ESC> in Normal mode
+nnoremap <ESC> <cmd>nohlsearch<CR>
 
 " ---------------------------------------------
 " /><>/ 42 /><>/
