@@ -15,9 +15,9 @@ setopt autocd				# if command is not a normal command and is a directory cd into
 # home config directory
 export XDG_CONFIG_HOME="$HOME/.config"
 
-# vim workflow
-export VISUAL=vim
-export EDITOR=vim
+# nvim workflow
+export VISUAL=nvim
+export EDITOR=nvim
 
 # browser
 export BROWSER="firefox"
@@ -146,6 +146,8 @@ function meow(){
 # common use
 alias c='clear -x'
 alias e='exit'
+alias v='command vim'
+alias vim='nvim'
 alias nv='nvim'
 alias open='xdg-open'
 alias hist='history'
@@ -255,3 +257,4 @@ echo ":: did you git pull today?"
 
 # local override
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
+export PATH="$HOME/.local/bin:$PATH"
