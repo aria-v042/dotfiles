@@ -1,111 +1,143 @@
---
--- [[ Vim Options ]]
---
 
--- Enable relative line numbers
-vim.o.number = true
-vim.o.relativenumber = true
+-- =======
+-- Options
+-- =======
 
--- Configure tabs according to C code standards
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = false
+-- Basic settings
+vim.opt.number = true                              -- Line numbers
+vim.opt.relativenumber = true                      -- Relative line numbers
+vim.opt.cursorline = true                          -- Highlight current line
+--vim.opt.wrap = false                               -- Don't wrap lines
+vim.opt.scrolloff = 10                             -- Keep 10 lines above/below cursor 
+vim.opt.sidescrolloff = 8                          -- Keep 8 columns left/right of cursor
 
--- Enable mouse mode, can be useful for resizing splits
-vim.o.mouse = 'a'
+-- Indentation - Follow 42 Norminette's norms
+vim.opt.tabstop = 4                                -- Tab width
+vim.opt.softtabstop = 4                            -- Soft tab stop
+vim.opt.shiftwidth = 4                             -- Indent width
+vim.opt.expandtab = false                          -- Use spaces instead of tabs
+vim.opt.smartindent = true                         -- Smart auto-indenting
+vim.opt.autoindent = true                          -- Copy indent from current line
 
--- Don't show the mode, since it's already in the status line
-vim.o.showmode = false
+-- Search settings
+vim.opt.ignorecase = true                          -- Case insensitive search
+vim.opt.smartcase = true                           -- Case sensitive if uppercase in search
+vim.opt.hlsearch = true	                           -- Highlight search results 
+vim.opt.incsearch = true                           -- Show matches as you type
 
--- Sync clipboard between OS and Neovim.
-vim.schedule(function() 
-	vim.o.clipboard = 'unnamedplus' 
-end)
+-- Visual settings
+vim.opt.termguicolors = true                       -- Enable 24-bit colors
+vim.opt.signcolumn = "yes"                         -- Always show sign column
+vim.opt.colorcolumn = "80"                        -- Show column at 100 characters
+vim.opt.showmatch = true                           -- Highlight matching brackets
+vim.opt.matchtime = 2                              -- How long to show matching bracket
+vim.opt.cmdheight = 1                              -- Command line height
+vim.opt.completeopt = "menuone,noinsert,noselect"  -- Completion options 
+vim.opt.showmode = false                           -- Don't show mode in command line 
+vim.opt.pumheight = 10                             -- Popup menu height 
+vim.opt.pumblend = 10                              -- Popup menu transparency 
+vim.opt.winblend = 0                               -- Floating window transparency 
+vim.opt.conceallevel = 0                           -- Don't hide markup 
+vim.opt.concealcursor = ""                         -- Don't hide cursor line markup 
+vim.opt.lazyredraw = true                          -- Don't redraw during macros
+vim.opt.synmaxcol = 300                            -- Syntax highlighting limit 
+vim.opt.fillchars = { eob = " " }                  -- Hide ~ on empty lines
 
--- Enable break indent
-vim.o.breakindent = true
+-- Create undo directory if it doesn't exist
+local undodir = vim.fn.expand("~/.vim/undodir")
+if vim.fn.isdirectory(undodir) == 0 then
+  vim.fn.mkdir(undodir, "p")
+end
 
--- Save undo/redo history between sessions
-vim.o.undofile = true
+-- File handling
+vim.opt.backup = false                             -- Don't create backup files
+vim.opt.writebackup = false                        -- Don't create backup before writing
+vim.opt.swapfile = false                           -- Don't create swap files
+vim.opt.undofile = true                           -- Persistent undo: toggle w <L>tu
+vim.opt.undodir = vim.fn.expand("~/.vim/undodir")  -- Undo directory
+vim.opt.updatetime = 300                           -- Faster completion
+vim.opt.timeoutlen = 500                           -- Key timeout duration
+vim.opt.ttimeoutlen = 0                            -- Key code timeout
+vim.opt.autoread = true                            -- Auto reload files changed outside vim
+vim.opt.autowrite = false                          -- Don't auto save
 
--- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.o.ignorecase = true
-vim.o.smartcase = true
+-- Behavior settings
+vim.opt.hidden = true                              -- Allow hidden buffers
+vim.opt.errorbells = false                         -- No error bells
+vim.opt.backspace = "indent,eol,start"             -- Better backspace behavior
+vim.opt.autochdir = false                          -- Don't auto change directory
+vim.opt.path:append("**")                          -- include subdirectories in search
+vim.opt.selection = "exclusive"                    -- Selection behavior
+vim.opt.mouse = "a"                                -- Enable mouse support
+vim.opt.clipboard:append("unnamedplus")            -- Use system clipboard
+vim.opt.modifiable = true                          -- Allow buffer modifications
+vim.opt.encoding = "UTF-8"                         -- Set encoding
 
--- Keep signcolumn on by default
-vim.o.signcolumn = 'yes'
+-- Folding settings
+vim.opt.foldmethod = "expr"                        -- Use expression for folding
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"    -- Use treesitter for folding
+vim.opt.foldlevel = 99                             -- Start with all folds open
 
--- Decrease update time
-vim.o.updatetime = 250
+-- Split behavior
+vim.opt.splitbelow = true                          -- Horizontal splits go below
+vim.opt.splitright = true                          -- Vertical splits go right
 
--- Decrease mapped sequence wait time
-vim.o.timeoutlen = 300
+-- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
--- Configure how new splits should be opened
-vim.o.splitright = true
-vim.o.splitbelow = true
+-- ============
+-- Key mappings
+-- ============
 
--- Set how neovim will display certain whitespace characters in the editor
-vim.o.list = true
---vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-
--- Preview substitutions live
-vim.o.inccommand = 'split'
-
--- Show which line your cursor is on
-vim.o.cursorline = true
-
--- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 10
-
--- Prompt for saving file instead of failing certain operations due to unsaved changes
-vim.o.confirm = true
-
---
--- [[ Basic Keymaps ]]
---
-
--- Exit Insert mode with 'jj' 
-vim.keymap.set('i', 'jj', '<Esc>')
+-- Exit Insert mode with 'jj'
+vim.keymap.set("i", "jj", "<Esc>", { desc = "Exit Insert mode with 'jj'" })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
 
---
--- [[ Diagnostic Config & Keymaps ]]
---
-vim.diagnostic.config {
-  update_in_insert = false,
-  float = { 
-	  focusable = false,
-	  style = 'minimal',
-	  border = 'rounded',
-	  source = 'if_many',
-	  header = '',
-	  prefix = '',
-  },
-  underline = { severity = { min = vim.diagnostic.severity.WARN } },
+-- Center screen when jumping
+--vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
+--vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
+--vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
+--vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
 
-  -- Can switch between these as you prefer
-  virtual_text = true, -- Text shows up at the end of the line
-  virtual_lines = false, -- Text shows up underneath the line, with virtual lines
+-- Buffer navigation
+vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
 
-  -- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
-  jump = { float = true },
-}
+-- Window navigation & resizing
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
+vim.keymap.set("n", "<A-Up>", ":resize +2<CR>", { desc = "Increase window height" })
+vim.keymap.set("n", "<A-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<A-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<A-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Show [D]iagnostic error messages' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+-- Delete without yanking
+vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yanking" })
 
---
--- [[ Autocommands ]]
---
+-- Paste without yanking
+vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
 
--- Highlight when yanking (copying) text
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function() vim.hl.on_yank() end,
-})
+-- Move lines up/down
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+
+-- Better indenting in visual mode
+vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
+
+-- File navigation
+vim.keymap.set("n", "<leader>e", "<cmd>Explore<CR>", { desc = "Open file explorer" })
+vim.keymap.set("n", "<leader>ff", ":find ", { desc = "Find file" })
+
+-- Better J behavior
+vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position" })
+
+-- Quick config editing
+vim.keymap.set("n", "<leader>rc", ":e $MYVIMRC<CR>", { desc = "Edit config" })
+vim.keymap.set("n", "<leader>rl", ":so $MYVIMRC<CR>", { desc = "Reload config" })
+
