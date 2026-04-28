@@ -1,0 +1,7 @@
+{
+  "42-NorminetteNvim": { "branch": "main", "commit": "8319a8d81c7646af2eca3de1501f943b6ee0a00d" },
+  "42-header.nvim": { "branch": "main", "commit": "213eed395eebe317700800daf26f476a8c94989c" },
+  "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
+  "mini.icons": { "branch": "main", "commit": "bac6317300e205335df425296570d84322730067" },
+  "plenary.nvim": { "branch": "master", "commit": "74b06c6c75e4eeb3108ec01852001636d85a932b" }
+}
