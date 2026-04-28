@@ -94,6 +94,10 @@ vim.opt.diffopt:append("linematch:60")
 vim.opt.redrawtime = 10000				-- Max time for syntax highlighting
 vim.opt.maxmempattern = 20000			-- Increase memory nvim can use for regex
 
+-- Make indentation markers more subtle
+vim.api.nvim_set_hl(0, "IblIndent", { fg = "#2a2a2a" })  -- dim inactive lines
+vim.api.nvim_set_hl(0, "IblScope",  { fg = "#565656" })  -- slightly brighter for current scope
+
 -- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
 -- ============
