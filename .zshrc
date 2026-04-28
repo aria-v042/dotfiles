@@ -31,6 +31,9 @@ export CLOUD="$HOME/MEGA"
 export SCRIPTS="$HOME/scripts"
 export ZSH="$HOME/.zsh"
 
+# current project
+export PROJECT="$REPOS/Libft"
+
 
 # ---------------------------------------------
 # PATH
@@ -151,8 +154,13 @@ alias vim='nvim'
 alias nv='nvim'
 alias open='xdg-open'
 alias hist='history'
-alias zshrc='$EDITOR ~/.zshrc && source ~/.zshrc'
 alias please='eval "sudo $(fc -ln -1)"'
+
+# edit configs
+alias zshrc='$EDITOR ~/.zshrc && source ~/.zshrc'
+alias nvimrc='$EDITOR $XDG_CONFIG_HOME/nvim'
+alias kittyrc='$EDITOR $XDG_CONFIG_HOME/kitty'
+alias tmuxrc='$EDITOR $HOME/.tmux.conf'
 
 # change some commands' default behaviors
 alias dir='dir --color=auto'
@@ -170,8 +178,8 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../.. && echo "(no way u rly think thats the best way u couldve done that)"'
 alias repos='cd $REPOS'
-alias piscinecore='cd $REPOS/piscinecore'
-alias vimcheat='cd $REPOS/piscinecore/notes/ && $EDITOR vim_cheatsheet.md'
+alias project='cd $PROJECT'
+alias pro='project'
 
 # ls / eza
 alias ls='ls --color --group-directories-first'
