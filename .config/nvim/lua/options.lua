@@ -57,7 +57,7 @@ vim.opt.undofile = false				-- Persistent undo
 vim.opt.undodir = vim.fn.expand("~/.vim/undodir")	-- Undo directory
 vim.opt.updatetime = 300				-- Faster completion
 vim.opt.timeoutlen = 500				-- Key timeout duration
-vim.opt.ttimeoutlen = 0					-- Key code timeout
+vim.opt.ttimeoutlen = 10				-- Key code timeout
 vim.opt.autowrite = false				-- Don't auto save
 vim.opt.autoread = true					-- Auto reload files changed outside vim
 
@@ -111,10 +111,10 @@ vim.keymap.set("i", "jj", "<Esc>", { desc = "Exit Insert mode with 'jj'" })
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlights" })
 
 -- Center screen when jumping
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
 --vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
 --vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
---vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
---vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
 
 -- Buffer navigation
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
@@ -136,11 +136,9 @@ vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yankin
 -- Paste without yanking
 vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
 
--- Move lines up/down
-vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
-vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
-vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
-vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+-- Move selected lines up/down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
 -- Better indenting in visual mode
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })

@@ -4,6 +4,7 @@ return {
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', },
+			{ "nvim-telescope/telescope-ui-select.nvim" },
 		},
 		config = function()
 			local telescope = require("telescope")
@@ -11,22 +12,6 @@ return {
 
 			telescope.setup({
 				defaults = {
-					-- Where results appear
-					layout_strategy = "horizontal",
-					layout_config = {
-						horizontal = {
-							prompt_position = "top",
-							preview_width = 0.55,
-							results_width = 0.45,
-						},
-						width = 0.87,
-						height = 0.80,
-					},
-
-					sorting_strategy = "ascending", -- results go top-down
-					prompt_prefix = "   ",
-					selection_caret = "  ",
-
 					-- Files/dirs to always ignore
 					file_ignore_patterns = {
 						"%.git/",
@@ -72,11 +57,40 @@ return {
 						override_file_sorter = true,
 						case_mode = "smart_case", -- case-insensitive unless you use uppercase
 					},
+					['ui-select'] = { require('telescope.themes').get_dropdown() },
 				},
 			})
 
-			-- Load the fzf extension after setup
+			-- Load extensions after setup
 			telescope.load_extension("fzf")
+			telescope.load_extension("ui-select")
+
+			-- Keymaps
+			local map = vim.keymap.set
+			local builtin = require("telescope.builtin")
+			-- Files
+			map("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+			map("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+			map("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+			-- Search
+			map("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
+			map("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
+			-- LSP (very useful for C)
+			map("n", "<leader>ss", builtin.lsp_document_symbols,  { desc = "Document symbols" })
+			map("n", "<leader>sS", builtin.lsp_workspace_symbols, { desc = "Workspace symbols" })
+			map("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+			map("n", "gr",       builtin.lsp_references,         { desc = "LSP references" })
+			-- Git
+			map("n", "<leader>gc", builtin.git_commits,  { desc = "Git commits" })
+			map("n", "<leader>gb", builtin.git_branches, { desc = "Git branches" })
+			map("n", "<leader>gs", builtin.git_status,   { desc = "Git status" })
+			-- Meta
+			map("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
+			map("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
+			map("n", "<leader>sc", builtin.colorscheme,  { desc = "[S]earch [C]olorschemes" })
+			-- Telescope
+			map("n", "<leader>st", builtin.builtin, { desc = "[S]earch Select [T]elescope" })
+			map("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 		end,
 	},
 }
