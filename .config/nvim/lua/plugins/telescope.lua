@@ -79,11 +79,12 @@ return {
 			map("n", "<leader>ss", builtin.lsp_document_symbols,  { desc = "Document symbols" })
 			map("n", "<leader>sS", builtin.lsp_workspace_symbols, { desc = "Workspace symbols" })
 			map("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
-			map("n", "gr",       builtin.lsp_references,         { desc = "LSP references" })
+			map("n", "gr", builtin.lsp_references, { desc = "LSP references" })
 			-- Git
-			map("n", "<leader>gc", builtin.git_commits,  { desc = "Git commits" })
-			map("n", "<leader>gb", builtin.git_branches, { desc = "Git branches" })
-			map("n", "<leader>gs", builtin.git_status,   { desc = "Git status" })
+			map("n", "<leader>gf", builtin.git_files,  { desc = "[G]it [F]iles" })
+			map("n", "<leader>gc", builtin.git_commits,  { desc = "[G]it [C]ommits" })
+			map("n", "<leader>gb", builtin.git_branches, { desc = "[G]it [B]ranches" })
+			map("n", "<leader>gs", builtin.git_status,   { desc = "[G]it [S]tatus" })
 			-- Meta
 			map("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 			map("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })

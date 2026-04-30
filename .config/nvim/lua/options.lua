@@ -8,7 +8,7 @@ vim.opt.number = true					-- Line numbers
 vim.opt.relativenumber = true			-- Relative line numbers
 vim.opt.cursorline = true				-- Highlight current line
 --vim.opt.wrap = false					-- Don't wrap lines
-vim.opt.scrolloff = 10					-- Keep 10 lines above/below cursor 
+vim.opt.scrolloff = 10					-- Keep 10 lines above/below cursor  to clipboard
 vim.opt.sidescrolloff = 8				-- Keep 8 columns left/right of cursor
 
 -- Indentation - follow 42 Norm
@@ -69,7 +69,7 @@ vim.opt.autochdir = false				-- Don't auto change directory
 vim.opt.path:append("**")				-- include subdirectories in search
 vim.opt.selection = "exclusive"			-- Selection behavior
 vim.opt.mouse = "a"						-- Enable mouse support
-vim.opt.clipboard:append("unnamedplus")	-- Use system clipboard
+--vim.opt.clipboard:append("unnamedplus")	-- Use system clipboard
 vim.opt.modifiable = true				-- Allow buffer modifications
 
 vim.opt.encoding = "UTF-8"				-- Set encoding
@@ -118,7 +118,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
 
 -- Buffer navigation
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<leader>bb", ":bprevious<CR>", { desc = "Previous buffer" })
 
 -- Window navigation & resizing
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
@@ -130,11 +130,18 @@ vim.keymap.set("n", "<A-Down>", ":resize -2<CR>", { desc = "Decrease window heig
 vim.keymap.set("n", "<A-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
 vim.keymap.set("n", "<A-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
--- Delete without yanking
+-- Delete without overwriting register
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yanking" })
+vim.keymap.set({ "n", "v" }, "<leader>x", '"_x', { desc = "Delete without yanking" })
 
--- Paste without yanking
-vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
+-- Paste without overwriting register
+vim.keymap.set("x", "<leader>p", "\"+p", { desc = "Paste from selection" })
+vim.keymap.set("x", "<leader>P", "\"+P", { desc = "Paste from selection without yanking" })
+
+-- Yank to clipboard
+vim.keymap.set("v", "<leader>y", "\"+y")
+vim.keymap.set("n", "<leader>y", "\"+y")
+vim.keymap.set("n", "<leader>Y", "\"+Y")
 
 -- Move selected lines up/down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
