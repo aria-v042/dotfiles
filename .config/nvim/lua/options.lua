@@ -132,6 +132,7 @@ vim.keymap.set("n", "<A-Right>", ":vertical resize +2<CR>", { desc = "Increase w
 
 -- Delete without overwriting register
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yanking" })
+vim.keymap.set({ "n" }, "<leader>D", '"_D', { desc = "Delete until the end of line without yanking" })
 vim.keymap.set({ "n", "v" }, "<leader>x", '"_x', { desc = "Delete without yanking" })
 
 -- Paste without overwriting register
