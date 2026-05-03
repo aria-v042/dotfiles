@@ -149,9 +149,10 @@ function meow(){
 # common use
 alias c='clear -x'
 alias e='exit'
-alias v='command vim'
 alias vim='nvim'
-alias nv='nvim'
+alias v='vim'
+alias v.='vim .'
+alias ogvim='command vim'
 alias open='xdg-open'
 alias hist='history'
 alias please='eval "sudo $(fc -ln -1)"'
