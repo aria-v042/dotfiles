@@ -159,7 +159,7 @@ alias please='eval "sudo $(fc -ln -1)"'
 
 # edit configs
 alias zshrc='$EDITOR ~/.zshrc && source ~/.zshrc'
-alias nvimrc='$EDITOR $XDG_CONFIG_HOME/nvim'
+alias nvimrc='cd $XDG_CONFIG_HOME/nvim && $EDITOR .'
 alias kittyrc='$EDITOR $XDG_CONFIG_HOME/kitty'
 alias tmuxrc='$EDITOR $HOME/.tmux.conf'
 
