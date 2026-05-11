@@ -28,7 +28,8 @@ export LESS="-R"		# render ANSI color codes
 # directories
 export REPOS="$HOME/repos"
 export CLOUD="$HOME/MEGA"
-export SCRIPTS="$HOME/scripts"
+export SCRIPTS="$HOME/.local/bin"
+export TRY="$HOME/try"
 export ZSH="$HOME/.zsh"
 
 # current project
@@ -102,7 +103,11 @@ prompt pure								# choose pure as the prompt
 # ---------------------------------------------
 
 
-set -o vi			# set vi-style key bindings
+# set vi-style key bindings
+set -o vi
+
+# Ctrl+f to run tmux-sessionizer
+bindkey -s '^f' 'tmux-sessionizer\n'
 
 
 # ---------------------------------------------
@@ -152,15 +157,16 @@ alias e='exit'
 alias vim='nvim'
 alias v='vim'
 alias v.='vim .'
-alias ogvim='command vim'
+alias vimog='command vim'
 alias open='xdg-open'
 alias hist='history'
 alias please='eval "sudo $(fc -ln -1)"'
+#alias tmuxss'tmux-sessionizer'
 
 # edit configs
 alias zshrc='$EDITOR ~/.zshrc && source ~/.zshrc'
-alias nvimrc='$EDITOR $XDG_CONFIG_HOME/nvim'
-alias kittyrc='$EDITOR $XDG_CONFIG_HOME/kitty'
+alias nvimrc='tmux-sessionizer $XDG_CONFIG_HOME/nvim && $EDITOR .'
+alias kittyrc='tmux-sessionizer $XDG_CONFIG_HOME/kitty && $EDITOR .'
 alias tmuxrc='$EDITOR $HOME/.tmux.conf'
 
 # change some commands' default behaviors
@@ -179,7 +185,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../.. && echo "(no way u rly think thats the best way u couldve done that)"'
 alias repos='cd $REPOS'
-alias project='cd $PROJECT'
+alias project='tmux-sessionizer $PROJECT'
 alias pro='project'
 
 # ls / eza
