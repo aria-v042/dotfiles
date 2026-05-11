@@ -13,6 +13,10 @@ return {
 	mail = "frodrig2@students.42porto.com", -- Your mail.
 	-- add other options.
   },
+  init = function()
+    vim.g.user = "frodrig2"
+    vim.g.mail = "frodrig2@students.42porto.com"
+  end,
   config = function(_, opts)
     require("42header").setup(opts)
   end,
