@@ -115,26 +115,6 @@ bindkey -s '^f' 'tmux-sessionizer\n'
 # ---------------------------------------------
 
 
-# get backlight module interface's brightness (default), max_brightness or actual_brightness value
-function get_brightness(){
-	if [[ "$1" == "max" ]]; then
-		command cat /sys/class/backlight/$(command ls /sys/class/backlight/ | head -1)/max_brightness
-	elif [[ "$1" == "actual" ]]; then
-		command cat /sys/class/backlight/$(command ls /sys/class/backlight/ | head -1)/actual_brightness
-	else
-		command cat /sys/class/backlight/$(command ls /sys/class/backlight/ | head -1)/brightness
-	fi
-}
-
-# set backlight module interface's brightness to given value or max_brightness otherwise
-function set_brightness(){
-	if [[ $# -gt 0 ]]; then
-		echo "$1" | sudo tee /sys/class/backlight/$(command ls /sys/class/backlight/ | head -1)/brightness
-	else
-		command cat /sys/class/backlight/$(command ls /sys/class/backlight/ | head -1)/max_brightness | sudo tee /sys/class/backlight/$(command ls /sys/class/backlight/ | head -1)/brightness
-	fi
-}
-
 # text-to-speech
 function say(){
     echo "$@" | festival --tts
