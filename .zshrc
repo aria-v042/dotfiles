@@ -143,12 +143,6 @@ alias hist='history'
 alias please='eval "sudo $(fc -ln -1)"'
 #alias tmuxss'tmux-sessionizer'
 
-# edit configs
-alias zshrc='$EDITOR ~/.zshrc && source ~/.zshrc'
-alias nvimrc='tmux-sessionizer $XDG_CONFIG_HOME/nvim && $EDITOR .'
-alias kittyrc='tmux-sessionizer $XDG_CONFIG_HOME/kitty && $EDITOR .'
-alias tmuxrc='$EDITOR $HOME/.tmux.conf'
-
 # change some commands' default behaviors
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
@@ -158,6 +152,12 @@ alias egrep='egrep --color=auto'
 alias diff='diff --color=always'
 alias wget='wget --continue'		# continue getting partially downloaded files
 
+# edit configs
+alias zshrc='$EDITOR ~/.zshrc && source ~/.zshrc'
+alias nvimrc='tmux-sessionizer $XDG_CONFIG_HOME/nvim && $EDITOR .'
+alias kittyrc='tmux-sessionizer $XDG_CONFIG_HOME/kitty && $EDITOR .'
+alias tmuxrc='$EDITOR $HOME/.tmux.conf'
+
 # cd / navigation
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -165,6 +165,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../.. && echo "(no way u rly think thats the best way u couldve done that)"'
 alias repos='cd $REPOS'
+alias scripts='tmux-sessionizer $SCRIPTS'
 alias project='tmux-sessionizer $PROJECT'
 alias pro='project'
 
