@@ -154,8 +154,8 @@ alias wget='wget --continue'		# continue getting partially downloaded files
 
 # edit configs
 alias zshrc='$EDITOR ~/.zshrc && source ~/.zshrc'
-alias nvimrc='tmux-sessionizer $XDG_CONFIG_HOME/nvim && $EDITOR .'
-alias kittyrc='tmux-sessionizer $XDG_CONFIG_HOME/kitty && $EDITOR .'
+alias nvimrc='tmux-sessionizer $XDG_CONFIG_HOME/nvim'
+alias kittyrc='tmux-sessionizer $XDG_CONFIG_HOME/kitty'
 alias tmuxrc='$EDITOR $HOME/.tmux.conf'
 
 # cd / navigation
@@ -211,7 +211,8 @@ alias ccw='cc -Wall -Werror -Wextra'
 # /><>/ 42 /><>/
 alias mini='~/mini-moulinette/mini-moul.sh'
 alias examshell='git clone https://github.com/Seraph919/Grademe-edu && cd Grademe-edu && make && make'
-
+alias francinette='$HOME/francinette/tester.sh'
+alias paco='francinette'
 
 # ---------------------------------------------
 # TOOLS
