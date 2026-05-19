@@ -71,8 +71,8 @@ vim.opt.selection = "exclusive"			-- Selection behavior
 vim.opt.mouse = "a"						-- Enable mouse support
 --vim.opt.clipboard:append("unnamedplus")	-- Use system clipboard
 vim.opt.modifiable = true				-- Allow buffer modifications
-
 vim.opt.encoding = "UTF-8"				-- Set encoding
+
 -- Folding settings
 vim.opt.foldmethod = "expr"				-- Use expression for folding
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"	-- Use treesitter for folding
