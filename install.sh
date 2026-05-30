@@ -100,28 +100,33 @@ backup_existing() {
     local backup_dir="${HOME}/.dotfiles-backup-$(date +%Y%m%d_%H%M%S)"
     local backed_up=false
 
-    cd "${DOTFILES_DIR}"
     for pkg in "${PACKAGES[@]}"; do
-        [[ -d "${pkg}" ]] || continue
 
-        while IFS= read -r line; do
-            if [[ "${line}" =~ ^LINK:\ (.+)\ \=\>\ .+ ]]; then
-                local target="${HOME}/${BASH_REMATCH[1]}"
-                if [[ -e "${target}" && ! -L "${target}" ]]; then
-                    echo "Backing up: ${target}"
-                    mkdir -p "${backup_dir}"
-                    cp -r "${target}" "${backup_dir}/"
-                    rm -rf "${target}"
-                    backed_up=true
-                fi
+        [[ -d "${DOTFILES_DIR}/${pkg}" ]] || continue
+
+        while IFS= read -r -d '' src; do
+			# convert path from stow structure to home dir structure
+            local rel="${src#${DOTFILES_DIR}/${pkg}/}"
+            local target="${HOME}/${rel}"
+
+			# skip existing directories
+			if [[ -d "${src}" && -d "${target}" && ! -L "${target}" ]]; then
+				continue
+			fi
+			# check if file exists and is not already a symlink
+            if [[ -e "${target}" && ! -L "${target}" ]]; then
+                echo "Backing up: ${target}"
+                mkdir -p "${backup_dir}/$(dirname "${rel}")"
+                cp -r "${target}" "${backup_dir}/${rel}"
+                rm -rf "${target}"
+                backed_up=true
             fi
-        # Use stow's simulation to handle nested cases
-        done < <(stow --simulate --verbose "${pkg}" 2>&1)
+        done < <(find "${DOTFILES_DIR}/${pkg}" -mindepth 1 -print0)
     done
 
-	if $backed_up; then
-		echo "Existing files backed up to: ${backup_dir}"
-	fi
+    if $backed_up; then
+        echo "Existing files backed up to: ${backup_dir}"
+    fi
 }
 
 # ── 4. Stow packages ─────────────────────────────────────────────────────────
