@@ -153,11 +153,14 @@ alias egrep='egrep --color=auto'
 alias diff='diff --color=always'
 alias wget='wget --continue'		# continue getting partially downloaded files
 
-# edit configs
+# dotfiles
+alias dot='tmux-sessionizer $DOTFILES'
 alias zshrc='$EDITOR ~/.zshrc && source ~/.zshrc'
+alias tmuxrc='$EDITOR $HOME/.tmux.conf'
 alias nvimrc='tmux-sessionizer $XDG_CONFIG_HOME/nvim'
 alias kittyrc='tmux-sessionizer $XDG_CONFIG_HOME/kitty'
-alias tmuxrc='$EDITOR $HOME/.tmux.conf'
+#alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+
 
 # cd / navigation
 alias ..='cd ..'
@@ -201,10 +204,6 @@ alias tsepoch='date +%s'            # seconds since Unix epoch
 
 # recently installed packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
-
-# dotfiles
-#alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
-alias dot='tmux-sessionizer $DOTFILES'
 
 # c compiler / gcc
 alias ccw='cc -Wall -Werror -Wextra'
