@@ -25,16 +25,16 @@ install_stow() {
 	echo "Installing GNU Stow..."
 
 	# Try package managers
-	if command -v pacman &>/dev/null && sudo -n true 2>/dev/null; then
+	if command -v pacman &>/dev/null && sudo -v 2>/dev/null; then
 		sudo pacman -S --noconfirm stow && return
 	fi
-	if command -v apt-get &>/dev/null && sudo -n true 2>/dev/null; then
+	if command -v apt-get &>/dev/null && sudo -v 2>/dev/null; then
 		sudo apt-get install -y stow && return
 	fi
 	if command -v brew &>/dev/null; then
 		brew install stow && return
 	fi
-	if command -v dnf &>/dev/null && sudo -n true 2>/dev/null; then
+	if command -v dnf &>/dev/null && sudo -v 2>/dev/null; then
 		sudo dnf install -y stow && return
 	fi
 
