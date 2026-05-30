@@ -31,6 +31,7 @@ export CLOUD="$HOME/MEGA"
 export SCRIPTS="$HOME/.local/bin"
 export TRY="$HOME/try"
 export ZSH="$HOME/.zsh"
+export DOTFILES="$HOME/dotfiles"
 
 # current project
 export PROJECT="$REPOS/ft_printf"
@@ -201,8 +202,9 @@ alias tsepoch='date +%s'            # seconds since Unix epoch
 # recently installed packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 
-# dotfiles.git
-alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+# dotfiles
+#alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+alias dot='tmux-sessionizer $DOTFILES'
 
 # c compiler / gcc
 alias ccw='cc -Wall -Werror -Wextra'
