@@ -1,0 +1,32 @@
+# BEGIN_KITTY_THEME
+include current-theme.conf
+# END_KITTY_THEME
+
+# Window decorations
+hide_window_decorations	no
+
+# Tabs
+tab_bar_style	powerline
+tab_bar_min_tabs	1
+map Ctrl+Shift+T new_tab_with_cwd
+
+# Bell - silence
+enable_audio_bell	no
+
+# Scrollback - increase; default = 2000
+scrollback_lines	5000
+
+# Windows
+map ctrl+shift+n new_os_window_with_cwd
+
+# Window transparency
+background_opacity	0.90
+
+# Window multiplexing
+enabled_layouts	splits
+map ctrl+shift+enter launch --cwd=current --location=split
+map ctrl+shift+alt+enter layout_action rotate
+map ctrl+left	neighboring_window left
+map ctrl+down	neighboring_window down
+map ctrl+up		neighboring_window up
+map ctrl+right	neighboring_window right

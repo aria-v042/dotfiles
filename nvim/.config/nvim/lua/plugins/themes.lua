@@ -1,0 +1,147 @@
+return {
+	{	-- THEME: catpuccin
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		config = function()
+			---@diagnostic disable-next-line: missing-fields
+			require("catppuccin").setup({
+				flavour = "auto", -- latte, frappe, macchiato, mocha
+				background = { -- :h background
+					light = "latte",
+					dark = "mocha",
+				},
+				transparent_background = true, -- disables setting the background color.
+				show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+				term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
+				dim_inactive = {
+					enabled = false, -- dims the background color of inactive window
+					shade = "dark",
+					percentage = 0.15, -- percentage of the shade to apply to the inactive window
+				},
+				no_italic = false, -- Force no italic
+				no_bold = false, -- Force no bold
+				no_underline = false, -- Force no underline
+				styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+					comments = { "italic" }, -- Change the style of comments
+					conditionals = { "italic" },
+					loops = {},
+					functions = {},
+					keywords = {},
+					strings = {},
+					variables = {},
+					numbers = {},
+					booleans = {},
+					properties = {},
+					types = {},
+					operators = {},
+					-- miscs = {}, -- Uncomment to turn off hard-coded styles
+				},
+				color_overrides = {},
+				custom_highlights = {},
+				default_integrations = true,
+				integrations = {
+					cmp = true,
+					gitsigns = true,
+					nvimtree = true,
+					treesitter = true,
+					notify = false,
+					mini = {
+						enabled = true,
+						indentscope_color = "",
+					},
+				},
+			})
+		end,
+	},
+	{	-- THEME: cyberdream
+		"scottmckendry/cyberdream.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function ()
+			require("cyberdream").setup({
+				transparent = true	-- enable transparent background
+			})
+			vim.cmd.colorscheme("cyberdream")
+		end,
+	},
+    {	-- THEME: fluoromachine
+		'maxmx03/fluoromachine.nvim',
+		lazy = false,
+		priority = 1000,
+		config = function ()
+			require('fluoromachine').setup({
+				glow = false,
+				theme = 'fluoromachine',
+				transparent = true,
+			})
+			vim.cmd.colorscheme('fluoromachine')
+		end,
+    },
+	{	-- THEME: monokai pro
+		"loctvl842/monokai-pro.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("monokai-pro").setup({
+				transparent_background = true,
+			})
+			vim.cmd.colorscheme("monokai-pro")
+		end,
+	},
+	{	-- THEME: moonlight
+		'shaunsingh/moonlight.nvim',
+		lazy = false,
+		priority = 1000,
+		config = function()
+
+			vim.g.moonlight_disable_background = true
+
+			-- Load the colorscheme
+			require("moonlight").set()
+		end,
+	},
+	{	-- THEME: oxocarbon
+		"nyoom-engineering/oxocarbon.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.opt.background = "dark" -- set to dark or light
+			vim.cmd.colorscheme "oxocarbon"
+			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+			vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+		end,
+	},
+	{	-- THEME: poimandres
+		'olivercederborg/poimandres.nvim',
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require('poimandres').setup {
+				-- leave this setup function empty for default config
+				-- or refer to the configuration section
+				-- for configuration options
+				bold_vert_split = false, -- use bold vertical separators
+				dim_nc_background = true, -- dim 'non-current' window backgrounds
+				disable_background = true, -- disable background
+				disable_float_background = true, -- disable background for floats
+				disable_italics = false, -- disable italics
+			}
+			vim.cmd.colorscheme('poimandres')
+		end,
+	},
+	{	-- THEME: tokyonight
+		"folke/tokyonight.nvim",
+		priority = 1000, -- Make sure to load this before all the other start plugins.
+		config = function()
+			---@diagnostic disable-next-line: missing-fields
+			require("tokyonight").setup({
+				transparent = true, --  NOTE: set to true if you want transparent background
+				styles = {
+					comments = { italic = false }, -- Disable italics in comments
+				},
+			})
+		end,
+	}
+}
