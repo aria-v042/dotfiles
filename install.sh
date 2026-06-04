@@ -65,13 +65,23 @@ install_stow() {
 	echo "Building and installing to ~/.local ..."
 	tar -xzf "${build_dir}/${stow_tar}" -C "${build_dir}"
 	cd "${build_dir}/stow-${stow_version}"
-	./configure --prefix="${HOME}/.local" --without-pmdir \
-		PERL5LIB="${HOME}/.local/share/perl5" 2>/dev/null
+#	# OLD:
+#	./configure --prefix="${HOME}/.local" --without-pmdir \
+#		PERL5LIB="${HOME}/.local/share/perl5" 2>/dev/null
+#	make install
+#	cd - >/dev/null
+#	rm -rf "${build_dir}"
+#	export PATH="${HOME}/.local/bin:${PATH}"
+#
+	# NEW:
+	./configure --prefix="${HOME}/.local" \
+    		--with-pmdir="${HOME}/.local/lib/perl5" 2>/dev/null
 	make install
 	cd - >/dev/null
 	rm -rf "${build_dir}"
-
 	export PATH="${HOME}/.local/bin:${PATH}"
+	export PERL5LIB="${HOME}/.local/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+
 
 	if ! command -v stow &>/dev/null; then
 		echo "ERROR: Stow build succeeded but binary not found in PATH."
