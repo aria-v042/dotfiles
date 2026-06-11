@@ -145,6 +145,9 @@ alias please='eval "sudo $(fc -ln -1)"'
 alias tmxs='tmux-sessionizer'
 alias code='$EDITOR'
 
+# typos
+alias gti='git'
+
 # change some commands' default behaviors
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
