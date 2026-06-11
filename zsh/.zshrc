@@ -174,6 +174,11 @@ alias scripts='tmux-sessionizer $SCRIPTS'
 alias project='cd $PROJECT'
 alias pro='tmux-sessionizer $PROJECT'
 
+# projects
+alias libft='tmux-sessionizer $HOME/repos/libft'
+alias ftprintf='tmux-sessionizer $HOME/repos/ft_printf'
+alias getnextline='tmux-sessionizer $HOME/repos/get_next_line'
+
 # ls / eza
 alias ls='ls --color --group-directories-first'
 alias la='ls -A'                            # all files
