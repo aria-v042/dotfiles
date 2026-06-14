@@ -34,7 +34,7 @@ export ZSH="$HOME/.zsh"
 export DOTFILES="$HOME/dotfiles"
 
 # current project
-export PROJECT="$REPOS/ft_printf"
+export PROJECT="$REPOS/get_next_line"
 
 
 # ---------------------------------------------
