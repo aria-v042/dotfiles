@@ -62,7 +62,6 @@ return {
 			require("cyberdream").setup({
 				transparent = true	-- enable transparent background
 			})
-			vim.cmd.colorscheme("cyberdream")
 		end,
 	},
     {	-- THEME: fluoromachine
@@ -75,7 +74,6 @@ return {
 				theme = 'fluoromachine',
 				transparent = true,
 			})
-			vim.cmd.colorscheme('fluoromachine')
 		end,
     },
 	{	-- THEME: monokai pro
@@ -86,7 +84,6 @@ return {
 			require("monokai-pro").setup({
 				transparent_background = true,
 			})
-			vim.cmd.colorscheme("monokai-pro")
 		end,
 	},
 	{	-- THEME: moonlight
@@ -107,10 +104,9 @@ return {
 		priority = 1000,
 		config = function()
 			vim.opt.background = "dark" -- set to dark or light
-			vim.cmd.colorscheme "oxocarbon"
-			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-			vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+			-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+			-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+			-- vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 		end,
 	},
 	{	-- THEME: poimandres
@@ -128,7 +124,6 @@ return {
 				disable_float_background = true, -- disable background for floats
 				disable_italics = false, -- disable italics
 			}
-			vim.cmd.colorscheme('poimandres')
 		end,
 	},
 	{	-- THEME: tokyonight

@@ -6,6 +6,7 @@ vim.g.have_nerd_font = true
 
 require "options"
 require "functions"
+require "transparency"
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
