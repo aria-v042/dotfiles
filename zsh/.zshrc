@@ -15,7 +15,7 @@ setopt autocd				# if command is not a normal command and is a directory cd into
 # home config directory
 export XDG_CONFIG_HOME="$HOME/.config"
 
-# nvim workflow
+# editor
 export VISUAL=nvim
 export EDITOR=nvim
 
@@ -23,7 +23,7 @@ export EDITOR=nvim
 export BROWSER="firefox"
 
 # less
-export LESS="-R"		# render ANSI color codes
+export LESS="-R"	# render ANSI color codes
 
 # directories
 export REPOS="$HOME/repos"
