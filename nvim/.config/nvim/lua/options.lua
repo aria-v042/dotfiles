@@ -54,7 +54,7 @@ end
 vim.opt.backup = false					-- Don't create backup files
 vim.opt.writebackup = false				-- Don't create backup before writing
 vim.opt.swapfile = false				-- Don't create swap files
-vim.opt.undofile = false				-- Persistent undo
+vim.opt.undofile = true					-- Persistent undo
 vim.opt.undodir = vim.fn.expand("~/.vim/undodir")	-- Undo directory
 vim.opt.updatetime = 300				-- Faster completion
 vim.opt.timeoutlen = 500				-- Key timeout duration
