@@ -177,7 +177,8 @@ alias scripts='tmux-sessionizer $SCRIPTS'
 alias project='cd $PROJECT'
 alias pro='tmux-sessionizer $PROJECT'
 
-# projects
+# repos
+alias ariacore='tmux-sessionizer $HOME/repos/ariacore'
 alias libft='tmux-sessionizer $HOME/repos/libft'
 alias ftprintf='tmux-sessionizer $HOME/repos/ft_printf'
 alias getnextline='tmux-sessionizer $HOME/repos/get_next_line'
