@@ -193,9 +193,10 @@ alias lsize='ls -lAh -S'                    # sort by size, smallest first
 
 if type -p eza &>/dev/null; then
     # if eza is installed
-    alias eza='eza --group-directories-first'
-    alias ea='eza -A'								# all files
-    alias el='eza -AlgH --git'						# long list
+    alias ez='command eza --group-directories-first'
+    alias eza='eza -A'								# all files
+    alias ezl='eza -AlgH --git'						# long list
+
     alias tree='eza --tree'							# tree view
     alias ltree='el --tree --git --git-ignore'      # tree view long list 
 fi
