@@ -112,22 +112,6 @@ bindkey -s '^f' 'tmux-sessionizer\n'
 
 
 # ---------------------------------------------
-# FUNCTIONS
-# ---------------------------------------------
-
-
-# text-to-speech
-function say(){
-    echo "$@" | festival --tts
-}
-
-# meow
-function meow(){
-	cat "$@" && say meow meow
-}
-
-
-# ---------------------------------------------
 # ALIASES
 # ---------------------------------------------
 
@@ -135,17 +119,23 @@ function meow(){
 # common use
 alias c='clear -x'
 alias e='exit'
-alias vim='nvim'
-alias v='vim'
-alias v.='vim .'
-alias ogvim='command vim'
 alias open='xdg-open'
 alias hist='history'
 alias please='eval "sudo $(fc -ln -1)"'
-alias tmxs='tmux-sessionizer'
-alias code='$EDITOR'
+alias tmx='tmux-sessionizer'
 
-# typos
+# editor
+alias vim='$EDITOR'
+alias code='$EDITOR'
+alias v='vim'
+alias v.='vim .'
+alias nv='nvim'
+alias nv.='nvim .'
+alias paleovim='command vim'	# original Vim editor (not NeoVim)
+alias pvim='paleovim'
+alias pv='paleovim'
+
+# common typos
 alias gti='git'
 
 # change some commands' default behaviors
@@ -194,11 +184,11 @@ alias lsize='ls -lAh -S'                    # sort by size, smallest first
 if type -p eza &>/dev/null; then
     # if eza is installed
     alias ez='command eza --group-directories-first'
-    alias eza='eza -A'								# all files
-    alias ezl='eza -AlgH --git'						# long list
+    alias eza='ez -A'								# all files
+    alias ezl='ez -AlgH --git'						# long list
 
-    alias tree='eza --tree'							# tree view
-    alias ltree='el --tree --git --git-ignore'      # tree view long list 
+    alias tree='ez --tree'							# tree view
+    alias ltree='ezl --tree --git --git-ignore'      # tree view long list 
 fi
 
 # find files recursively and sort by last modified; ignore hidden files
