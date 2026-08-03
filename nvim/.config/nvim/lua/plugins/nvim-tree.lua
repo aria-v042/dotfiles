@@ -7,7 +7,14 @@ return {
 	end,
 	config = function()
 		require('nvim-tree').setup({
-			view = { width = 30 },
+			view = {
+				adaptive_size = true,
+				width = {
+					min = 20,
+					max = 40,
+					padding = 1,
+				},
+			},
 			renderer = { group_empty = true },
 		})
 		vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle file tree' })
