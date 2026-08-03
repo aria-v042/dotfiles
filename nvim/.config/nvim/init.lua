@@ -21,11 +21,13 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy.nvim
 require("lazy").setup({
-  spec = {
-    { import = "plugins" },
-  },
-  -- automatically check for plugin updates
-  checker = { enabled = true },
+	spec = {
+		{ import = "plugins" },
+	},
+	-- disable luarocks
+	rocks = { enabled = false },
+	-- automatically check for plugin updates
+	checker = { enabled = true },
 })
 
 require "colorscheme"
