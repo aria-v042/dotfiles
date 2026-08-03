@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 projects=(
+	"$HOME"
     "$REPOS"
     "$TRY"
 )
