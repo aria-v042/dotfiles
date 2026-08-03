@@ -208,8 +208,7 @@ alias tsepoch='date +%s'            # seconds since Unix epoch
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 
 # c compiler / gcc
-alias ccw='cc -Wall -Werror -Wextra'
-
+alias ccw='cc -Wall -Wextra -Werror'
 
 # /><>/ 42 /><>/
 alias mini='~/mini-moulinette/mini-moul.sh'
