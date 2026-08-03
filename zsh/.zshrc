@@ -125,7 +125,6 @@ alias please='eval "sudo $(fc -ln -1)"'
 alias tmx='tmux-sessionizer'
 
 # editor
-alias vim='$EDITOR'
 alias code='$EDITOR'
 alias v='vim'
 alias v.='vim .'
