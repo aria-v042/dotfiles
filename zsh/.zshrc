@@ -12,6 +12,7 @@ setopt autocd				# if command is not a normal command and is a directory cd into
 # ENVIRONMENT VARIABLES
 # ---------------------------------------------
 
+
 # home config directory
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -69,6 +70,7 @@ setopt HIST_IGNORE_DUPS		# don't save duplicate lines
 setopt SHARE_HISTORY		# share hist between sessions
 setopt HIST_VERIFY          # when '!' history expansion,
                                 # show command before executing
+
 
 # ---------------------------------------------
 # COMPLETION
@@ -215,6 +217,7 @@ alias examshell='git clone https://github.com/Seraph919/Grademe-edu && cd Gradem
 alias francinette='$HOME/francinette/tester.sh'
 alias paco='francinette'
 
+
 # ---------------------------------------------
 # TOOLS
 # ---------------------------------------------
@@ -242,9 +245,11 @@ fi
 #fi
 #source "$ZSH/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
+
 # ---------------------------------------------
 # END
 # ---------------------------------------------
+
 
 #if command -v fastfetch &>/dev/null; then
 #    fastfetch
