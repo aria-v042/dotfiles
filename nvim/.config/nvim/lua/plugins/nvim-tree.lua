@@ -16,6 +16,10 @@ return {
 				},
 			},
 			renderer = { group_empty = true },
+			filters = {
+				dotfiles = false,		-- show dotfiles ('H' to hide)
+				git_ignored = false,	-- show git ignored files ('I' to hide)
+			},
 		})
 		vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle file tree' })
 	end,
