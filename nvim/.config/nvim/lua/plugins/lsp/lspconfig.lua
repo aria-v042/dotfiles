@@ -1,0 +1,43 @@
+return {
+  "neovim/nvim-lspconfig",
+--  config = function()
+--    vim.lsp.config("clangd", {
+--      cmd = {
+--        "clangd",
+--        "--background-index",
+--        "--clang-tidy",
+--        "--header-insertion=never", -- 42 norm hates auto-inserted headers
+--        "--completion-style=detailed",
+--      },
+--    })
+--
+--    vim.lsp.config("lua_ls", {
+--      settings = {
+--        Lua = {
+--          diagnostics = { globals = { "vim" } },
+--          workspace = { checkThirdParty = false },
+--        },
+--      },
+--    })
+--
+--    vim.api.nvim_create_autocmd("LspAttach", {
+--      group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+--      callback = function(ev)
+--        local map = function(mode, lhs, rhs, desc)
+--          vim.keymap.set(mode, lhs, rhs, { buffer = ev.buf, desc = desc })
+--        end
+--
+--        map("n", "gd", vim.lsp.buf.definition, "Go to definition")
+--        map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
+--        map("n", "gr", vim.lsp.buf.references, "Go to references")
+--        map("n", "gi", vim.lsp.buf.implementation, "Go to implementation")
+--        map("n", "K", vim.lsp.buf.hover, "Hover documentation")
+--        map("n", "<leader>rn", vim.lsp.buf.rename, "Rename symbol")
+--        map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
+--        map("n", "<leader>D", vim.lsp.buf.type_definition, "Type definition")
+--        map("n", "[d", vim.diagnostic.goto_prev, "Previous diagnostic")
+--        map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
+--      end,
+--    })
+--  end,
+}
