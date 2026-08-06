@@ -30,7 +30,6 @@ export LESS="-R"	# render ANSI color codes
 export REPOS="$HOME/repos"
 export CLOUD="$HOME/MEGA"
 export SCRIPTS="$HOME/.local/bin"
-export TRY="$HOME/try"
 export ZSH="$HOME/.zsh"
 export DOTFILES="$HOME/dotfiles"
 
@@ -257,6 +256,6 @@ fi
 echo "Welcome back, $(whoami)"
 echo ":: did you git pull today?"
 
-# local override
+# source local configuration
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 export PATH="$HOME/.local/bin:$PATH"
