@@ -11,6 +11,7 @@ vim.opt.wrap = true						-- Wrap lines
 vim.opt.textwidth = 80
 vim.opt.scrolloff = 10					-- Keep 10 lines above/below cursor  to clipboard
 vim.opt.sidescrolloff = 8				-- Keep 8 columns left/right of cursor
+vim.opt.confirm = true					-- Start a dialog when a command fails
 
 -- Indentation - follow 42 Norm
 vim.opt.tabstop = 4						-- Tab width
@@ -34,7 +35,7 @@ vim.opt.showmatch = true				-- Highlight matching brackets
 vim.opt.matchtime = 2					-- How long to show matching bracket
 vim.opt.cmdheight = 1					-- Command line height
 vim.opt.completeopt = "menuone,noinsert,noselect"	-- Completion options 
---vim.opt.showmode = false				-- Don't show mode in command line 
+vim.opt.showmode = true					-- Show mode in command line 
 vim.opt.pumheight = 10					-- Popup menu height 
 vim.opt.pumblend = 10					-- Popup menu transparency 
 vim.opt.winblend = 0					-- Floating window transparency 
@@ -135,9 +136,9 @@ vim.keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yankin
 vim.keymap.set({ "n" }, "<leader>D", '"_D', { desc = "Delete until the end of line without yanking" })
 vim.keymap.set({ "n", "v" }, "<leader>x", '"_x', { desc = "Delete without yanking" })
 
--- Paste without overwriting register
-vim.keymap.set("x", "<leader>p", "\"+p", { desc = "Paste from selection" })
-vim.keymap.set("x", "<leader>P", "\"+P", { desc = "Paste from selection without yanking" })
+-- Paste from clipboard
+vim.keymap.set("x", "<leader>p", "\"+p", { desc = "Paste from clipboard" })
+vim.keymap.set("x", "<leader>P", "\"+P", { desc = "Paste from clipboard without yanking" })
 
 -- Yank to clipboard
 vim.keymap.set("v", "<leader>y", "\"+y")
