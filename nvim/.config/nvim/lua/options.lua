@@ -37,7 +37,7 @@ vim.opt.cmdheight = 1					-- Command line height
 vim.opt.completeopt = "menuone,noinsert,noselect"	-- Completion options 
 vim.opt.showmode = true					-- Show mode in command line 
 vim.opt.pumheight = 10					-- Popup menu height 
-vim.opt.pumblend = 10					-- Popup menu transparency 
+--vim.opt.pumblend = 10					-- Popup menu transparency 
 vim.opt.winblend = 0					-- Floating window transparency 
 vim.opt.conceallevel = 0				-- Don't hide markup 
 vim.opt.concealcursor = ""				-- Don't hide cursor line markup 
@@ -56,11 +56,12 @@ vim.opt.backup = false					-- Don't create backup files
 vim.opt.writebackup = false				-- Don't create backup before writing
 vim.opt.swapfile = false				-- Don't create swap files
 vim.opt.undofile = true					-- Persistent undo
+vim.opt.autowrite = false				-- Don't auto save
+vim.opt.autoread = true					-- Auto reload files changed outside vim
+
 vim.opt.updatetime = 300				-- Faster completion
 vim.opt.timeoutlen = 500				-- Key timeout duration
 vim.opt.ttimeoutlen = 10				-- Key code timeout
-vim.opt.autowrite = false				-- Don't auto save
-vim.opt.autoread = true					-- Auto reload files changed outside vim
 
 -- Behavior settings
 vim.opt.hidden = true					-- Allow hidden buffers
@@ -70,9 +71,9 @@ vim.opt.autochdir = false				-- Don't auto change directory
 vim.opt.path:append("**")				-- include subdirectories in search
 vim.opt.selection = "exclusive"			-- Selection behavior
 vim.opt.mouse = "a"						-- Enable mouse support
---vim.opt.clipboard:append("unnamedplus")	-- Use system clipboard
 vim.opt.modifiable = true				-- Allow buffer modifications
 vim.opt.encoding = "UTF-8"				-- Set encoding
+--vim.opt.clipboard:append("unnamedplus")	-- Use system clipboard by default
 
 -- Folding settings
 vim.opt.foldmethod = "expr"				-- Use expression for folding
