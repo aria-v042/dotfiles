@@ -33,6 +33,7 @@ export SCRIPTS="$HOME/.local/bin"
 export TRY="$HOME/try"
 export ZSH="$HOME/.zsh"
 export DOTFILES="$HOME/dotfiles"
+export NOTES="$REPOS/notescore"
 
 # current project
 export PROJECT="$REPOS/push_swap"
@@ -167,6 +168,7 @@ alias repos='cd $REPOS'
 alias scripts='tmux-sessionizer $SCRIPTS'
 alias project='cd $PROJECT'
 alias pro='tmux-sessionizer $PROJECT'
+alias notes='tmux-sessionizer $NOTES'
 
 # repos
 alias ariacore='tmux-sessionizer $HOME/repos/ariacore'
