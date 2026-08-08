@@ -176,7 +176,7 @@ alias getnextline='tmux-sessionizer $HOME/repos/get_next_line'
 alias pushswap='tmux-sessionizer $HOME/repos/push_swap'
 
 # ls / eza
-alias ls='ls --color --group-directories-first'
+alias ls='ls --color --group-directories-first --indicator-style=slash'
 alias la='ls -A'                            # all files
 alias ll='ls -Al -h'                        # long list
 alias l.="ls -A | grep -e '^\.'"            # show only dotfiles
