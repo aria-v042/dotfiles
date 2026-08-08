@@ -168,13 +168,6 @@ alias project='cd $PROJECT'
 alias pro='tmux-sessionizer $PROJECT'
 alias notes='tmux-sessionizer $NOTES'
 
-# repos
-alias ariacore='tmux-sessionizer $HOME/repos/ariacore'
-alias libft='tmux-sessionizer $HOME/repos/libft'
-alias ftprintf='tmux-sessionizer $HOME/repos/ft_printf'
-alias getnextline='tmux-sessionizer $HOME/repos/get_next_line'
-alias pushswap='tmux-sessionizer $HOME/repos/push_swap'
-
 # ls / eza
 alias ls='ls --color --group-directories-first --indicator-style=slash'
 alias la='ls -A'                            # all files
