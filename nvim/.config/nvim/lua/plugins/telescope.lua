@@ -75,11 +75,6 @@ return {
 			-- Search
 			map("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
 			map("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-			-- LSP (very useful for C)
-			map("n", "<leader>ss", builtin.lsp_document_symbols,  { desc = "Document symbols" })
-			map("n", "<leader>sS", builtin.lsp_workspace_symbols, { desc = "Workspace symbols" })
-			map("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
-			map("n", "gr", builtin.lsp_references, { desc = "LSP references" })
 			-- Git
 			map("n", "<leader>gf", builtin.git_files,  { desc = "[G]it [F]iles" })
 			map("n", "<leader>gc", builtin.git_commits,  { desc = "[G]it [C]ommits" })

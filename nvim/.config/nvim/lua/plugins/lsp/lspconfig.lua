@@ -1,5 +1,5 @@
 return {
--- 	"neovim/nvim-lspconfig",
+ 	"neovim/nvim-lspconfig",
 -- 	config = function()
 -- 		-- Keymaps
 -- 		vim.api.nvim_create_autocmd("LspAttach", {

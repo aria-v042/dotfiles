@@ -31,4 +31,5 @@ require("lazy").setup({
 	checker = { enabled = true },
 })
 
+require "lsp"
 require "colorscheme"
