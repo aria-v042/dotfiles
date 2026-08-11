@@ -31,15 +31,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "gr", telescope_builtin.lsp_references, "Find references")
 
 	-- telescope_builtin.lsp_implementations
-    map("n", "gi", "<cmd>Telescope lsp_implementations<CR>", "Go to implementation")
+	-- "<cmd>Telescope lsp_implementations<CR>"
+	-- vim.lsp.buf.implementation
+    map("n", "gi", telescope_builtin.lsp_implementations, "Go to implementation")
 
     map("n", "K", vim.lsp.buf.hover, "Hover documentation")
 
-	map("n", "<leader>ss", telescope_builtin.lsp_document_symbols, "Document symbols")
+	map("n", "<leader>ds", telescope_builtin.lsp_document_symbols, "Document symbols")
 
-	map("n", "<leader>sS", telescope_builtin.lsp_workspace_symbols, "Workspace symbols")
+	map("n", "<leader>ws", telescope_builtin.lsp_workspace_symbols, "Workspace symbols")
 
-	map("n", "<leader>dd", telescope_builtin.diagnostics, "Show diagnostics")
+	map("n", "<leader>sd", telescope_builtin.diagnostics, "Show diagnostics")
 
 	map("n", "<leader>rn", vim.lsp.buf.rename, "Smart rename")
 
