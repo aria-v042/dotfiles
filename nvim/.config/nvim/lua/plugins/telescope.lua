@@ -70,7 +70,7 @@ return {
 			local builtin = require("telescope.builtin")
 			-- Files
 			map("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
-			map("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+			map("n", "<leader>so", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 			map("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 			-- Search
 			map("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
