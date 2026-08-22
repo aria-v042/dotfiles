@@ -17,6 +17,7 @@ return {
         vim.o.tags = table.concat(tags, ",")
       end
       require("rooter").reg_callback(update_ctags_option)
+	  require("rooter").reg_callback(require("ctags").update)
     end,
     dependencies = { "wsdjeg/job.nvim", "wsdjeg/rooter.nvim" },
 }
