@@ -37,6 +37,12 @@ return {
 					quit_on_open = true,
 				},
 			},
+			-- expand/reveal currently opened file
+			update_focused_file = {
+				enable = true,
+				--update_root = true,	-- update root if file is outside the current root
+				ignore_list = {},
+			},
 		})
 		vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle file tree' })
 		--vim.keymap.set('n', '<leader>E', function()
