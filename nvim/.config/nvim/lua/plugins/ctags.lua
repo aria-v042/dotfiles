@@ -4,6 +4,7 @@ return {
 
 		require("ctags").setup()
 
+		-- update vim.o.tags options
 		local function update_ctags_option()
 			local project_root = vim.fn.getcwd()
 			local dir = require("ctags.util").unify_path(require("ctags.config").cache_dir)
@@ -18,6 +19,7 @@ return {
 			vim.o.tags = table.concat(tags, ",")
 		end
 
+		-- auto-update tags and vim.o.tags options when project root changes
 		require("rooter").reg_callback(function()
 			local ok, err = pcall(function()
 				require("ctags").update()
@@ -28,20 +30,13 @@ return {
 			end
 		end, "update ctags on project root change")
 
-		-- claude's 1st fix -- manual root change check:
-
-		--local last_root = nil
-		--vim.api.nvim_create_autocmd({ "BufEnter", "VimEnter" }, {
-		--	desc = "Regenerate ctags and update tags option when project root changes",
-		--	callback = function()
-		--		local root = vim.fn.getcwd()
-		--		if root ~= last_root then
-		--			last_root = root
-		--			require("ctags").update()
-		--			update_ctags_option()
-		--		end
-		--	end,
-		--})
+		-- create command and keymap to force ctags update
+		vim.api.nvim_create_user_command("CtagsUpdate", function()
+			require("ctags").update()
+			update_ctags_option()
+		end, {})
+		vim.keymap.set("n", "<leader>ct", "<cmd>CtagsUpdate<cr>", 
+		{ desc = "Force ctags update" })
 
 	end,
 	dependencies = { 
