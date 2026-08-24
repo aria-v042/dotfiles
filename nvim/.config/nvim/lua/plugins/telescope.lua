@@ -15,12 +15,14 @@ return {
 					-- Files/dirs to always ignore
 					file_ignore_patterns = {
 						"%.git/",
-						"node_modules/",
-						"build/",
+						--"node_modules/",
+						--"build/",
 						"%.o",    -- C object files
 						"%.a",    -- C static libs
 						"%.out",  -- C compiled output
 					},
+
+					-- Don't ignore
 
 					-- Keymaps inside the Telescope window
 					mappings = {
@@ -39,10 +41,14 @@ return {
 				pickers = {
 					-- Customize individual pickers here
 					find_files = {
-						hidden = true,  -- include dotfiles
+						hidden = true,		-- show hidden files
+						no_ignore = true,	-- show files in .gitignore, .ignore, etc.
 					},
 					live_grep = {
-						additional_args = { "--hidden" }, -- ripgrep: include hidden files
+						additional_args = {	-- ripgrep flags:
+							"--hidden",			-- show hidden files
+							"--no-ignore-vcs",	-- show .gitignore files
+						},
 					},
 					buffers = {
 						sort_lastused = true,            -- MRU order
