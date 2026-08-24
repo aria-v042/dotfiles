@@ -53,8 +53,8 @@ vim.opt.incsearch = true				-- Show matches as you type
 
 vim.opt.termguicolors = true			-- Enable 24-bit colors
 
-vim.opt.signcolumn = "yes"				-- Always show sign column
-vim.opt.colorcolumn = "+1"				-- Show column at textwidth+1 characters
+vim.opt.signcolumn = "yes"				-- When/how to draw sign column
+--vim.opt.colorcolumn = "+1"			-- Show column at textwidth+1 characters
 
 vim.opt.showmatch = true				-- Highlight matching brackets
 vim.opt.matchtime = 2					-- How long to show matching bracket
