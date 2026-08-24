@@ -36,7 +36,7 @@ set hlsearch			" highlight search results
 
 set nostartofline		" don't jump to 1st non-blank char w/ page commands
 
-set formatoptions-=t	" don't autowrap text using 'textwidth'
+"set formatoptions-=t	" don't autowrap text using 'textwidth'
 set textwidth=80		" max width of the text
 set colorcolumn=80		" enable colored column at the 80th character mark
 
@@ -67,8 +67,9 @@ match RedundantWhitespace /\s\+$\| \+\ze\t/
 " exit Insert mode with 'jj'
 inoremap jj <ESC>
 
-" clear search highlights when pressing <ESC> in Normal mode
-nnoremap <ESC> <cmd>nohlsearch<CR>
+" clear search highlights in Normal mode
+nnoremap <ESC> <CMD>nohlsearch<CR>
+nnoremap <C-l> <CMD>nohlsearch<CR><C-l>
 
 " ---------------------------------------------
 " /><>/ 42 /><>/
