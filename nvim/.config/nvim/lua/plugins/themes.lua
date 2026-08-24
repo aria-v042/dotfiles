@@ -51,11 +51,11 @@ return {
 		"loctvl842/monokai-pro.nvim",
 		lazy = false,
 		priority = 1000,
-		config = function()
-			require("monokai-pro").setup({
-				transparent_background = true,
-			})
-		end,
+		-- config = function()
+		-- 	require("monokai-pro").setup({
+		-- 		transparent_background = true,
+		-- 	})
+		-- end,
 	},
 	{	-- THEME: moonlight
 		'shaunsingh/moonlight.nvim',
@@ -73,12 +73,12 @@ return {
 		"nyoom-engineering/oxocarbon.nvim",
 		lazy = false,
 		priority = 1000,
-		config = function()
-			vim.opt.background = "dark" -- set to dark or light
-			-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-			-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-			-- vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-		end,
+		-- config = function()
+		-- 	vim.opt.background = "dark" -- set to dark or light
+		-- 	-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+		-- 	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+		-- 	-- vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+		-- end,
 	},
 	{	-- THEME: poimandres
 		'olivercederborg/poimandres.nvim',
