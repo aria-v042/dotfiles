@@ -32,7 +32,7 @@ return {
 			respect_buf_cwd = true,
 			update_focused_file = {
 				enable = true,		-- expand/reveal currently opened file
-				update_root = true,	-- update root if file is outside the current root
+				--update_root = true,	-- update root if file is outside the current root
 			},
 		})
 		vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle file tree' })
