@@ -27,15 +27,11 @@ export BROWSER="firefox"
 export LESS="-R"	# render ANSI color codes
 
 # directories
-export REPOS="$HOME/repos"
-export CLOUD="$HOME/MEGA"
-export SCRIPTS="$HOME/.local/bin"
 export ZSH="$HOME/.zsh"
+export REPOS="$HOME/repos"
+export SCRIPTS="$HOME/.local/bin"
 export DOTFILES="$HOME/dotfiles"
 export NOTES="$REPOS/notescore"
-
-# current project
-export PROJECT="$REPOS/push_swap"
 
 
 # ---------------------------------------------
@@ -126,17 +122,14 @@ alias hist='history'
 alias please='eval "sudo $(fc -ln -1)"'
 alias tmx='tmux-sessionizer'
 
+# common typos
+alias gti='git'
+
 # editor
 alias v='vim'
 alias v.='vim .'
 alias nv='nvim'
 alias nv.='nvim .'
-alias paleovim='command vim'	# original Vim editor (not NeoVim)
-alias pvim='paleovim'
-alias pv='paleovim'
-
-# common typos
-alias gti='git'
 
 # change some commands' default behaviors
 alias dir='dir --color=auto'
@@ -153,19 +146,15 @@ alias zshrc='$EDITOR ~/.zshrc && source ~/.zshrc'
 alias tmuxrc='$EDITOR $HOME/.tmux.conf'
 alias nvimrc='tmux-sessionizer $XDG_CONFIG_HOME/nvim'
 alias kittyrc='tmux-sessionizer $XDG_CONFIG_HOME/kitty'
-#alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
-
 
 # cd / navigation
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-alias ......='cd ../../../../.. && echo "(no way u rly think thats the best way u couldve done that)"'
+alias ......='cd ../../../../..'
 alias repos='cd $REPOS'
 alias scripts='tmux-sessionizer $SCRIPTS'
-alias project='cd $PROJECT'
-alias pro='tmux-sessionizer $PROJECT'
 alias notes='tmux-sessionizer $NOTES'
 
 # ls / eza
@@ -182,8 +171,8 @@ if type -p eza &>/dev/null; then
     alias eza='ez -A'								# all files
     alias ezl='ez -AlgH --git'						# long list
 
-    alias tree='ez --tree'							# tree view
-    alias ltree='ezl --tree --git --git-ignore'      # tree view long list 
+    #alias tree='ez --tree'							# tree view
+    #alias ltree='ezl --tree --git --git-ignore'      # tree view long list 
 fi
 
 # find files recursively and sort by last modified; ignore hidden files
@@ -253,4 +242,5 @@ echo ":: did you git pull today?"
 
 # source local configuration
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
+
 export PATH="$HOME/.local/bin:$PATH"
