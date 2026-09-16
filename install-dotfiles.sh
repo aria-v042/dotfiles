@@ -14,7 +14,7 @@ PACKAGES=(
 	scripts
 )
 
-# ── 1. Dependencies ──────────────────────────────────────────────────────────
+# == 1. Dependencies ==========================================================
 
 install_stow() {
 	if command -v stow &>/dev/null; then
@@ -65,15 +65,7 @@ install_stow() {
 	echo "Building and installing to ~/.local ..."
 	tar -xzf "${build_dir}/${stow_tar}" -C "${build_dir}"
 	cd "${build_dir}/stow-${stow_version}"
-#	# OLD:
-#	./configure --prefix="${HOME}/.local" --without-pmdir \
-#		PERL5LIB="${HOME}/.local/share/perl5" 2>/dev/null
-#	make install
-#	cd - >/dev/null
-#	rm -rf "${build_dir}"
-#	export PATH="${HOME}/.local/bin:${PATH}"
-#
-	# NEW:
+
 	./configure --prefix="${HOME}/.local" \
     		--with-pmdir="${HOME}/.local/lib/perl5" 2>/dev/null
 	make install
@@ -81,7 +73,6 @@ install_stow() {
 	rm -rf "${build_dir}"
 	export PATH="${HOME}/.local/bin:${PATH}"
 	export PERL5LIB="${HOME}/.local/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
-
 
 	if ! command -v stow &>/dev/null; then
 		echo "ERROR: Stow build succeeded but binary not found in PATH."
@@ -92,7 +83,7 @@ install_stow() {
 	echo "Stow installed to ~/.local/bin/stow"
 }
 
-# ── 2. Clone repo ────────────────────────────────────────────────────────────
+# == 2. Clone repo ============================================================
 
 clone_dotfiles() {
 	if [[ -d "${DOTFILES_DIR}/.git" ]]; then
@@ -104,7 +95,7 @@ clone_dotfiles() {
 	fi
 }
 
-# ── 3. Backup conflicting files ───────────────────────────────────────────────
+# == 3. Backup conflicting files ===============================================
 
 backup_existing() {
     local backup_dir="${HOME}/.dotfiles-backup-$(date +%Y%m%d_%H%M%S)"
@@ -139,7 +130,7 @@ backup_existing() {
     fi
 }
 
-# ── 4. Stow packages ─────────────────────────────────────────────────────────
+# == 4. Stow packages =========================================================
 
 stow_packages() {
 	cd "${DOTFILES_DIR}"
@@ -153,7 +144,7 @@ stow_packages() {
 	done
 }
 
-# ── Main ─────────────────────────────────────────────────────────────────────
+# == Main =====================================================================
 
 echo "==> Installing dotfiles"
 install_stow
