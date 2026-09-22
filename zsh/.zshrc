@@ -141,6 +141,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias diff='diff --color=always'
 alias wget='wget --continue'		# continue getting partially downloaded files
+alias rm='rm -v'					# verbose by default
 
 # dotfiles
 alias dot='tmux-sessionizer $DOTFILES'
