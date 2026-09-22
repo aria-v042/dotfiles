@@ -165,16 +165,6 @@ alias l.="ls -A | grep -e '^\.'"            # show only dotfiles
 alias ltime='ls -lAh -t'                    # sort by time, newest first
 alias lsize='ls -lAh -S'                    # sort by size, smallest first
 
-if type -p eza &>/dev/null; then
-    # if eza is installed
-    alias ez='command eza --group-directories-first'
-    alias eza='ez -A'								# all files
-    alias ezl='ez -AlgH --git'						# long list
-
-    #alias tree='ez --tree'							# tree view
-    #alias ltree='ezl --tree --git --git-ignore'      # tree view long list 
-fi
-
 # find files recursively and sort by last modified; ignore hidden files
 alias lmod='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
 
