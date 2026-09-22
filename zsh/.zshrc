@@ -121,6 +121,8 @@ alias open='xdg-open'
 alias hist='history'
 alias please='eval "sudo $(fc -ln -1)"'
 alias tmx='tmux-sessionizer'
+alias py='python'
+alias py3='python3'
 
 # common typos
 alias gti='git'
