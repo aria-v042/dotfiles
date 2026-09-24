@@ -108,6 +108,28 @@ set -o vi
 # Ctrl+f to run tmux-sessionizer
 bindkey -s '^f' 'tmux-sessionizer\n'
 
+# Ctrl+k to center prompt using a custom function and ZLE widget
+bindkey '^k' zz-center-prompt
+
+
+# ---------------------------------------------
+# FUNCTIONS AND ZLE WIDGETS
+# ---------------------------------------------
+
+# center command prompt
+zz() {
+	local rows=$(( $(tput lines) / 2 ))
+	printf '%.0s\n' $(seq 1 "$rows")
+	tput cup "$rows" 0
+}
+
+# add zz as a ZLE widget
+zz-center-prompt() {
+	zle -I
+	zz
+	zle reset-prompt
+}
+zle -N zz-center-prompt
 
 # ---------------------------------------------
 # ALIASES
