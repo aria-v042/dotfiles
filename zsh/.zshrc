@@ -119,7 +119,7 @@ bindkey '^k' zz-center-prompt
 # center command prompt
 zz() {
 	local rows=$(( $(tput lines) / 2 ))
-	printf '%.0s\n' $(seq 1 "$rows")
+	tput indn "$rows"
 	tput cup "$rows" 0
 }
 
