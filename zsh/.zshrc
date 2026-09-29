@@ -1,7 +1,8 @@
+
+
 # ---------------------------------------------
 # ZSH OPTIONS
 # ---------------------------------------------
-
 
 setopt extended_glob		# extend glob syntax
 setopt interactivecomments	# enable comments within the interactive shell
@@ -11,7 +12,6 @@ setopt autocd				# if command is not a normal command and is a directory cd into
 # ---------------------------------------------
 # ENVIRONMENT VARIABLES
 # ---------------------------------------------
-
 
 # home config directory
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -38,7 +38,6 @@ export NOTES="$REPOS/notescore"
 # PATH
 # ---------------------------------------------
 
-
 path=(
 	$path			    # keep existing PATH entries
 	$HOME/bin
@@ -56,22 +55,19 @@ export PATH
 # HISTORY
 # ---------------------------------------------
 
-
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000
 SAVEHIST=100000
 
-setopt HIST_IGNORE_SPACE	# don't save when prefixed with space
-setopt HIST_IGNORE_DUPS		# don't save duplicate lines
-setopt SHARE_HISTORY		# share hist between sessions
-setopt HIST_VERIFY          # when '!' history expansion,
-                                # show command before executing
+setopt HIST_IGNORE_SPACE	# Don't save when prefixed with space
+setopt HIST_IGNORE_DUPS		# Don't save duplicate lines
+setopt SHARE_HISTORY		# Share hist between sessions
+setopt HIST_VERIFY          # `!!` expands in command prompt before executing
 
 
 # ---------------------------------------------
 # COMPLETION
 # ---------------------------------------------
-
 
 autoload -Uz compinit
 compinit -u
@@ -85,9 +81,9 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}" # colored completions
 # PROMPT
 # ---------------------------------------------
 
+# Pure prompt
 
-# pure prompt - clone if needed
-
+# Clone if needed
 if [[ ! -d "$HOME/.zsh/pure" ]]; then
     git clone --depth=1 https://github.com/sindresorhus/pure.git "$ZSH/pure"
 fi
@@ -101,8 +97,7 @@ prompt pure								# choose pure as the prompt
 # KEY BINDINGS
 # ---------------------------------------------
 
-
-# set vi-style key bindings
+# Set vi-style key bindings
 set -o vi
 
 # Ctrl+f to run tmux-sessionizer
@@ -116,14 +111,14 @@ bindkey '^k' zz-center-prompt
 # FUNCTIONS AND ZLE WIDGETS
 # ---------------------------------------------
 
-# center command prompt
+# Center command prompt
 zz() {
 	local rows=$(( $(tput lines) / 2 ))
 	tput indn "$rows"
 	tput cup "$rows" 0
 }
 
-# add zz as a ZLE widget
+# Add zz() as a ZLE widget
 zz-center-prompt() {
 	zle -I
 	zz
@@ -131,12 +126,11 @@ zz-center-prompt() {
 }
 zle -N zz-center-prompt
 
+
 # ---------------------------------------------
 # ALIASES
 # ---------------------------------------------
 
-
-# common use
 alias c='clear -x'
 alias e='exit'
 alias open='xdg-open'
@@ -146,16 +140,16 @@ alias tmx='tmux-sessionizer'
 alias py='python'
 alias py3='python3'
 
-# common typos
+# Typos
 alias gti='git'
 
-# editor
+# Editor
 alias v='vim'
 alias v.='vim .'
 alias nv='nvim'
 alias nv.='nvim .'
 
-# change some commands' default behaviors
+# Change default behaviors
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
@@ -165,14 +159,7 @@ alias diff='diff --color=always'
 alias wget='wget --continue'		# continue getting partially downloaded files
 alias rm='rm -v'					# verbose by default
 
-# dotfiles
-alias dot='tmux-sessionizer $DOTFILES'
-alias zshrc='$EDITOR ~/.zshrc && source ~/.zshrc'
-alias tmuxrc='$EDITOR $HOME/.tmux.conf'
-alias nvimrc='tmux-sessionizer $XDG_CONFIG_HOME/nvim'
-alias kittyrc='tmux-sessionizer $XDG_CONFIG_HOME/kitty'
-
-# cd / navigation
+# Navigation
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -182,7 +169,14 @@ alias repos='cd $REPOS'
 alias scripts='tmux-sessionizer $SCRIPTS'
 alias notes='tmux-sessionizer $NOTES'
 
-# ls / eza
+# Dotfiles
+alias dot='tmux-sessionizer $DOTFILES'
+alias zshrc='$EDITOR $HOME/.zshrc && source $HOME/.zshrc'
+alias tmuxrc='$EDITOR $HOME/.tmux.conf'
+alias nvimrc='tmux-sessionizer $XDG_CONFIG_HOME/nvim'
+alias kittyrc='tmux-sessionizer $XDG_CONFIG_HOME/kitty'
+
+# ls
 alias ls='ls --color --group-directories-first --indicator-style=slash'
 alias la='ls -A'                            # all files
 alias ll='ls -Al -h'                        # long list
@@ -190,22 +184,17 @@ alias l.="ls -A | grep -e '^\.'"            # show only dotfiles
 alias ltime='ls -lAh -t'                    # sort by time, newest first
 alias lsize='ls -lAh -S'                    # sort by size, smallest first
 
-# find files recursively and sort by last modified; ignore hidden files
+# === Command lines
+
+# Find files recursively and sort by last modified; ignore hidden files
 alias lmod='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
 
-# arch btw
-alias apt='man pacman'
-alias apt-get='man pacman'
-
-# timestamp
-alias ts='date +%y%m%d'             # YYMMDD
-alias tslong='date +%y%m%d_%H%M%S'  # YYMMDD_hhmmss
-alias tsepoch='date +%s'            # seconds since Unix epoch
-
-# recently installed packages
+# Recently installed packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 
-# c compiler / gcc
+# ===
+
+# C compiler -- warning flags
 alias ccw='cc -Wall -Wextra -Werror'
 
 # /><>/ 42 /><>/
@@ -218,7 +207,6 @@ alias paco='francinette'
 # ---------------------------------------------
 # TOOLS
 # ---------------------------------------------
-
 
 # fzf - clone repo if needed
 if [[ ! -d "$ZSH/fzf" ]]; then
@@ -247,15 +235,12 @@ fi
 # END
 # ---------------------------------------------
 
-
-#if command -v fastfetch &>/dev/null; then
-#    fastfetch
-#fi
-
+# Welcome message
 echo "Welcome back, $(whoami)"
 echo ":: did you git pull today?"
 
-# source local configuration
+# Source local configuration
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 
+# Export PATH
 export PATH="$HOME/.local/bin:$PATH"
