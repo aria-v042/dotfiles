@@ -4,7 +4,22 @@ return {
 
 		require("ctags").setup()
 
-		-- update vim.o.tags options
+		-- Rewrite the plugin's built-in update-on-save
+		-- to avoid indexing home and root directories
+		local augroup = vim.api.nvim_create_augroup("ctags.nvim", { clear = true })
+		vim.api.nvim_create_autocmd("BufWritePost", {
+			pattern = "*",
+			group = augroup,
+			callback = function()
+				local cwd = vim.fn.getcwd()
+				if cwd == vim.env.HOME or cwd == "/" then
+					return
+				end
+				require("ctags").update()
+			end,
+		})
+
+		-- Update vim.o.tags options
 		local function update_ctags_option()
 			local project_root = vim.fn.getcwd()
 			local dir = require("ctags.util").unify_path(require("ctags.config").cache_dir)
@@ -19,8 +34,13 @@ return {
 			vim.o.tags = table.concat(tags, ",")
 		end
 
-		-- auto-update tags and vim.o.tags options when project root changes
+		-- Auto-update tags and vim.o.tags options when project root changes
 		require("rooter").reg_callback(function()
+			-- Blocklist home and root directories
+			local cwd = vim.fn.getcwd()
+			if cwd == vim.env.HOME or cwd == "/" then
+				return
+			end
 			local ok, err = pcall(function()
 				require("ctags").update()
 				update_ctags_option()
@@ -30,8 +50,13 @@ return {
 			end
 		end, "update ctags on project root change")
 
-		-- create command and keymap to force ctags update
+		-- Create command and keymap to force ctags update
 		vim.api.nvim_create_user_command("CtagsUpdate", function()
+			-- Blocklist home and root directories
+			local cwd = vim.fn.getcwd()
+			if cwd == vim.env.HOME or cwd == "/" then
+				return
+			end
 			require("ctags").update()
 			update_ctags_option()
 		end, {})
