@@ -8,7 +8,6 @@ return {
 				"cyberdream",
 				"fluoromachine",
 				"gruvbox",
-				"kanagawa",
 				"monokai-pro",
 				"moonlight",
 				"oxocarbon",
