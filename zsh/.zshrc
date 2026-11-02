@@ -104,28 +104,48 @@ set -o vi
 bindkey -s '^f' 'tmux-sessionizer\n'
 
 # Ctrl+k to center prompt using a custom function and ZLE widget
-bindkey '^k' zz-center-prompt
+bindkey '^k' zle-center-prompt
+
+# Ctrl+p to clear screen and display welcome message using ZLE widget
+bindkey '^p' zle-welcome-msg
 
 
 # ---------------------------------------------
 # FUNCTIONS AND ZLE WIDGETS
 # ---------------------------------------------
 
-# Center command prompt
-zz() {
-	local rows=$(( $(tput lines) / 2 ))
-	tput indn "$rows"
-	tput cup "$rows" 0
+# Shell welcome message
+welcome() {
+	echo "Welcome back, $(whoami)"
+	echo ":: hack the world!"
+	# echo ":: did you git pull today?"
 }
 
-# Add zz() as a ZLE widget
-zz-center-prompt() {
+# Function: center command prompt
+zz() {
+	local rows=$(( $(tput lines) / 2 ))
+	tput indn $(( rows - 1 ))
+	tput cup $(( rows - 3 )) 0
+}
+
+# ZLE widget: center command prompt
+zle-center-prompt() {
 	zle -I
-	zz
+	local rows=$(( $(tput lines) / 2 ))
+	tput indn $(( rows - 1 ))
+	tput cup "$rows" 0
 	zle reset-prompt
 }
 zle -N zz-center-prompt
 
+# ZLE widget: Clear screen and show welcome message
+zle-welcome-msg() {
+	clear
+	welcome
+	tput cup 4 0
+	zle reset-prompt
+}
+zle -N zle-welcome-msg
 
 # ---------------------------------------------
 # ALIASES
@@ -208,7 +228,10 @@ alias paco='francinette'
 # TOOLS
 # ---------------------------------------------
 
-# fzf - clone repo if needed
+# ! # Comment/uncomment each section to select which tools to install
+
+# fzf #
+# clone repo if needed
 if [[ ! -d "$ZSH/fzf" ]]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git $ZSH/fzf
 	$ZSH/fzf/install --bin		# install to $ZSH/fzf/bin
@@ -218,13 +241,15 @@ if command -v fzf &>/dev/null; then
 	source <(fzf --zsh)         # source fzf configuration for zsh
 fi
 
-## zsh autosuggestions - clone repo if needed
-#if [[ ! -d "$ZSH/zsh-autosuggestions" ]]; then
+# # zsh autosuggestions #
+# # clone repo if needed
+# if [[ ! -d "$ZSH/zsh-autosuggestions" ]]; then
 #    git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH/zsh-autosuggestions"
-#fi
-#source "$ZSH/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# fi
+# source "$ZSH/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
-## zsh syntax highlighting - clone repo if needed
+# # zsh syntax highlighting #
+# # clone repo if needed
 #if [[ ! -d "$ZSH/zsh-syntax-highlighting" ]]; then
 #    git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH/zsh-syntax-highlighting"
 #fi
@@ -235,9 +260,10 @@ fi
 # END
 # ---------------------------------------------
 
-# Welcome message
-echo "Welcome back, $(whoami)"
-echo ":: did you git pull today?"
+# Display welcome message
+welcome
+# echo "Welcome back, $(whoami)"
+# echo ":: hack the world!"
 
 # Source local configuration
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
