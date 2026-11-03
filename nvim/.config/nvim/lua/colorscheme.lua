@@ -6,9 +6,6 @@
 -- Colorscheme issues:
 --
 --	General:
---		always:
---			- Harpoon: doesn't apply theme
---			- Themery: doesn't apply theme
 --		before re-selecting theme:
 --			- Telescope: doesn't apply theme; no transparency (except
 --			"monokai-pro")
