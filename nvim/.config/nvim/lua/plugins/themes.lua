@@ -118,7 +118,7 @@ return {
 					"telescope",
 					"renamer",
 					"notify",
-					"nvim-tree", -- aria: add NvimTree
+					"nvim-tree", -- add NvimTree
 				},
 			})
 		end,

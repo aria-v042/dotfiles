@@ -54,16 +54,7 @@ vim.api.nvim_create_autocmd("ColorScheme",
 {
 	pattern = "*",
 	callback = function()
-
-
-		--			- CursorLineNr
-		--			- StatusLine
-		--			- StatusLineNC
-		--			- NormalFloat
-		--			- Folded
-		--			- ColorColumn
-		--			- CursorLine
-
+		-- Set no background for relevant highlight groups
 		vim.api.nvim_set_hl(0, "EndOfBuffer",	{ bg = "none" })
 		vim.api.nvim_set_hl(0, "LineNr",		{ bg = "none" })
 		vim.api.nvim_set_hl(0, "CursorLineNr",	{ bg = "none" })
@@ -78,13 +69,16 @@ vim.api.nvim_create_autocmd("ColorScheme",
 		vim.api.nvim_set_hl(0, "NormalFloat",	{ bg = "none" })
 		vim.api.nvim_set_hl(0, "FloatBorder",	{ bg = "none" })
 		vim.api.nvim_set_hl(0, "Normal",		{ bg = "none" })
-		-- Plugin highlight groups:
+		-- indent-blankline
+		vim.api.nvim_set_hl(0, "IblScope",	{ bg = "none" })
 		vim.api.nvim_set_hl(0, "@ibl.scope.char.1",	{ bg = "none" })
+		-- telescope
 		vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bg = "none" })
 		vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
 		vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none" })
 		vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = "none" })
 		vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "none" })
+		-- nvim-tree
 		vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "none" })
 		vim.api.nvim_set_hl(0, "NvimTreeNormalNC", { bg = "none" })
 		vim.api.nvim_set_hl(0, "NvimTreeWinSeparator", { bg = "none" })

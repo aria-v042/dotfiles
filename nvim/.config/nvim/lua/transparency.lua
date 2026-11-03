@@ -2,41 +2,41 @@
 --  Transparency
 -- ==============
 
--- Diagnostics:
--- vim.api.nvim_create_autocmd("ColorScheme", {
--- 	pattern = "*",
--- 	desc = "Force transparent background on every highlight group",
--- 	callback = function()
--- 		local highlights = vim.api.nvim_get_hl(0, { link = false })
--- 		local processed, failed = 0, 0
--- 		for name, hl in pairs(highlights) do
--- 			if hl.bg or hl.ctermbg then
--- 				local new_hl = vim.tbl_extend("force", {}, hl)
--- 				new_hl.bg = nil
--- 				new_hl.ctermbg = nil
--- 				new_hl.default = nil
--- 				local ok, err = pcall(vim.api.nvim_set_hl, 0, name, new_hl)
--- 				if ok then
--- 					processed = processed + 1
--- 				else
--- 					failed = failed + 1
--- 					vim.notify("transparency: failed on '" .. name .. "': " .. tostring(err), vim.log.levels.WARN)
--- 				end
--- 			end
--- 		end
--- 		vim.notify(("transparency: cleared %d groups, %d failed"):format(processed, failed))
--- 	end,
--- })
-
--- Ver. 1.0 - Works except for Oxocarbon
--- Re-apply transparency every time a colorscheme is loaded,
--- so it works regardless of which theme Themery switches to
+-- -- Ver. 1.0 - Works except for Oxocarbon
+-- -- Re-apply transparency every time a colorscheme is loaded,
+-- -- so it works regardless of which theme Themery switches to
 -- vim.api.nvim_create_autocmd("ColorScheme", {
 -- 	pattern = "*",
 -- 	callback = function()
--- 		vim.api.nvim_set_hl(0, "Normal",      { bg = "none" })
--- 		vim.api.nvim_set_hl(0, "NormalNC",    { bg = "none" })
--- 		vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
--- 		vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+-- 		-- Set no background for relevant highlight groups
+-- 		vim.api.nvim_set_hl(0, "EndOfBuffer",	{ bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "LineNr",		{ bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "CursorLineNr",	{ bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "Folded",		{ bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "FoldColumn",	{ bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "StatusLine",	{ bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "StatusLineNC",	{ bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "WinSeparator",	{ bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "VertSplit",		{ bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "SignColumn",	{ bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "NormalNC",		{ bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "NormalFloat",	{ bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "FloatBorder",	{ bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "Normal",		{ bg = "none" })
+-- 		-- indent-blankline
+-- 		vim.api.nvim_set_hl(0, "IblScope",	{ bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "@ibl.scope.char.1",	{ bg = "none" })
+-- 		-- telescope
+-- 		vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = "none" })
+-- 		-- nvim-tree
+-- 		vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "NvimTreeNormalNC", { bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "NvimTreeWinSeparator", { bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "NvimTreeStatus", { bg = "none" })
+-- 		vim.api.nvim_set_hl(0, "NvimTreeStatusLineNC", { bg = "none" })
 -- 	end,
 -- })
